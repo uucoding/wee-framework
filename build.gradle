@@ -3,6 +3,7 @@ allprojects {
     group = 'com.weecoding'
     version = '0.0.1'
     repositories {
+        //如果打包到本地，本地仓库必须加载
         mavenLocal() //优先查找本地maven库，性能最好
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     }

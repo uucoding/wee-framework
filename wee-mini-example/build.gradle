@@ -1,5 +1,8 @@
 dependencies {
+    //可以直接引入项目模块
     compile project(":wee-mini-framework")
+    //如果通过uploadArchives打包至本地仓库后，可以引用本地模块
+//    compile('com.weecoding:wee-mini-framework:0.0.1')
 }
 
 jar{
