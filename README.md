@@ -1,8 +1,6 @@
 # wee-framework
 仿SpringMVC实现基础的请求转发
 
-参考[慕课网](https://coding.imooc.com/learn/list/350.html)
-
 ### 项目结构
 采用gradle多模块构建
 
