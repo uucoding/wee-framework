@@ -1,0 +1,3 @@
+dependencies {
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.5.23'
+}

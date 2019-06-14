@@ -1,0 +1,17 @@
+dependencies {
+    compile project(":wee-mini-framework")
+}
+
+jar{
+//  gradle默认打的jar是无法找到主类的，所以打包的时候需要指定主类是什么
+    manifest{
+        attributes 'Main-Class': 'com.weecoding.example.Application'
+    }
+    //默认打包不会把依赖打入jar中，所以需要使用如下方案将当前项目所依赖的项目都打入依赖
+    from{
+        //判断打入的jar是否是文件，如果是则直接打入，否则表示还有其他依赖，递归打入当前jar
+        configurations.compile.collect{
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}

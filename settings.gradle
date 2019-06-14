@@ -1,0 +1,4 @@
+rootProject.name = 'wee-framework'
+include 'wee-mini-framework'
+include 'wee-mini-example'
+

@@ -1,0 +1,38 @@
+//全局共享配置
+allprojects {
+    group = 'com.weecoding'
+    version = '0.0.1'
+    repositories {
+        mavenLocal() //优先查找本地maven库，性能最好
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+//子项目通用配置
+subprojects {
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+    // 打包至本地仓库
+    def localMavenRepo = 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+    uploadArchives {
+        repositories {
+            mavenDeployer   {
+                repository(url: localMavenRepo)
+                //构造项目的Pom文件
+                pom.project {
+                    name = project.name
+                    version = project.version
+                    groupId = project.group
+                }
+            }
+        }
+    }
+}
+
